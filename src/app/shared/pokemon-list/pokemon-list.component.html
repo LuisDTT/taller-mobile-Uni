@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de pokemon</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-gray-100">
+  <div class="p-4 grid grid-cols-2 gap-4">
+    <ion-card class="shadow-lg rounded-2xl" *ngFor="let pokemon of pokemonList">
+      <ion-card-header>
+        <ion-card-title class="capitalize text-lg text-center">
+          {{ pokemon.name }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="flex justify-center">
+        <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + pokemon.url.split('/')[6] + '.png'" 
+             [alt]="pokemon.name" class="w-24 h-24 object-contain" />
+      </ion-card-content>
+      <ion-button expand="full" [routerLink]="['/pokemon', pokemon.name]">
+        Ver más
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>
